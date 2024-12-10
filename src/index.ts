@@ -1,9 +1,9 @@
 import express from 'express';
 import 'reflect-metadata';
 
-import { env } from './app/config/env';
-import './database/connect';
-import router from './routes';
+import { env } from './app/config/env.ts';
+import './database/connect.ts';
+import router from './routes.ts';
 
 const app = express();
 
