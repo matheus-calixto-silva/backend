@@ -1,5 +1,9 @@
-import { createConnection } from 'typeorm';
+import { AppDataSource } from '../../ormconfig.ts';
 
-createConnection().then(() =>
-  console.log('Conexão bem sucedida com o banco de dados 🏦🎲')
-);
+AppDataSource.initialize()
+  .then(() => {
+    console.log('Conexão bem sucedida com o banco de dados 🏦🎲');
+  })
+  .catch((error) => {
+    console.error('Erro ao conectar no banco de dados ❌', error);
+  });
