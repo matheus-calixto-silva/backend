@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 import { env } from './src/app/config/env.ts';
 
 export const AppDataSource = new DataSource({
+  name: 'default',
   type: 'mysql',
   host: 'localhost',
   port: parseInt(env.mysql.port, 10),
@@ -10,7 +11,7 @@ export const AppDataSource = new DataSource({
   database: env.mysql.database,
   synchronize: false,
   logging: false,
-  entities: ['src/app/models/*.ts'],
-  migrations: ['src/database/migrations/*.ts'],
+  entities: ['./src/app/models/*.ts'],
+  migrations: ['./src/database/migrations/*.ts'],
   subscribers: [],
 });
