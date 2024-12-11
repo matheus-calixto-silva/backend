@@ -1,5 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-
+import bcrypt from 'bcryptjs';
+import {
+  BeforeInsert,
+  BeforeUpdate,
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 @Entity('usuarios')
 class User {
   @PrimaryGeneratedColumn()
@@ -38,6 +44,12 @@ class User {
     onUpdate: 'CURRENT_TIMESTAMP',
   })
   updated_at!: Date;
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  hasPassword() {
+    this.senha = bcrypt.hashSync(this.senha, 8);
+  }
 }
 
 export default User;
