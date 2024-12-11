@@ -14,9 +14,12 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "baseUrl": "./",
-    "experimentalDecorators": true, // the key line
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "typeRoots": ["./node_modules/@types", "./src/@types"]
   },
   "ts-node": {
+    "loader": "ts-node/esm",
     "require": ["tsconfig-paths/register"]
   }
 }
