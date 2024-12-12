@@ -2,9 +2,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import Schedule from './Schedule.ts';
 
 @Entity('servicos')
 class Service {
@@ -25,6 +27,9 @@ class Service {
 
   @UpdateDateColumn({ type: 'timestamp', name: 'updated_at' })
   updatedAt!: Date;
+
+  @OneToMany('Service', 'agendamento')
+  agendamentos!: Schedule[];
 }
 
 export default Service;
