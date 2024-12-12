@@ -50,6 +50,6 @@ export class CreateServicesTable1733924869789 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('services');
+    await queryRunner.dropTable('servicos');
   }
 }
