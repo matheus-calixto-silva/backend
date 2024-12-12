@@ -4,8 +4,10 @@ import {
   BeforeUpdate,
   Column,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import Schedule from './Schedule.ts';
 @Entity('usuarios')
 class User {
   @PrimaryGeneratedColumn()
@@ -44,6 +46,9 @@ class User {
     onUpdate: 'CURRENT_TIMESTAMP',
   })
   updated_at!: Date;
+
+  @OneToMany('User', 'agendamento')
+  agendamentos!: Schedule[];
 
   @BeforeInsert()
   @BeforeUpdate()
